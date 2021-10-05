@@ -8,7 +8,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -97,10 +96,8 @@ func getProducts(category string, limit int) (products Products) {
 	url := "https://digital.dmart.in/api/v1/plp/" + category + "?page=1&size=" + fmt.Sprint(limit)
 	method := "GET"
 
-	payload := strings.NewReader(`https://digital.dmart.in/api/v1/plp/grocery-aesc-grocerycore?page=1&size=40`)
-
 	client := &http.Client{}
-	req, err := http.NewRequest(method, url, payload)
+	req, err := http.NewRequest(method, url, nil)
 
 	if err != nil {
 		fmt.Println(err)
